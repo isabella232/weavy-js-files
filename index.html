@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://localhost:44323/javascript/weavy.js"></script>
+    <style>
+        .unread-badge {
+            background: #F92;
+            position: absolute;
+            top: 15px;
+            left: 18px;
+            width: 10px;
+            height: 10px;
+            border-radius: 10px;
+            z-index: 10;
+            display: none;
+        }
+        #instant-chat.has-unread .unread-badge {
+            display: block;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorial</title>
+</head>
+<body>
+    <script>
+        var jwt ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZW1vdXNlciIsIm5hbWUiOiJEZW1vIFVzZXIiLCJleHAiOjI1MTYyMzkwMjIsImlzcyI6ImRlZGViNTU4LTBiNTEtNGNhMy1hMGJjLWY2MDVlZTY4YjcwZiIsImVtYWlsIjoibWFpQGVtYWlsLmNvbSIsInVzZXJuYW1lIjoiZGVtbyJ9.YpwkhepTxWXfnhNj_oKElSYTpcU8j9sMRye7uJfJTSg';
+        var weavy = new Weavy({jwt: jwt});
+        var space = weavy.space({key:"demo"});
+        space.app({key:"chat-demo", type:"messenger", container:"#weavy-chat"});
+        weavy.on("badge", function(e, data) {
+            var ic = $("#instant-chat");
+            data.conversations > 0 ? ic.addClass("has-unread") : ic.removeClass("has-unread");
+        });
+    </script>
+    <div id="instant-chat" class="has-unread">
+        <div class="unread-badge"></div>
+        <i class="lni lni-comments"></i>
+    </div>
+    <div id="weavy-chat" style="height:95vh;"></div>
+</body>
+</html>
