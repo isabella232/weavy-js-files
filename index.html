@@ -14,8 +14,8 @@
         var jwt ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZW1vdXNlciIsIm5hbWUiOiJEZW1vIFVzZXIiLCJleHAiOjI1MTYyMzkwMjIsImlzcyI6ImRlZGViNTU4LTBiNTEtNGNhMy1hMGJjLWY2MDVlZTY4YjcwZiIsImVtYWlsIjoibWFpQGVtYWlsLmNvbSIsInVzZXJuYW1lIjoiZGVtbyJ9.YpwkhepTxWXfnhNj_oKElSYTpcU8j9sMRye7uJfJTSg';
         var weavy = new Weavy({jwt: jwt});
         var space = weavy.space({key:"demo"});
-        space.app({key:"feed-demo", type:"posts", container:"#weavy-feed"});
+        space.app({key:"files-demo", type:"files", container:"#weavy-files"});
     </script>
-    <div id="weavy-feed" style="height:300px;"></div>
+    <div id="weavy-files" style="height:300px;"></div>
 </body>
 </html>
